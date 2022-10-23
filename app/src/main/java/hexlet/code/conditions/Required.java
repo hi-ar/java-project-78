@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import java.util.Map;
 
 @AllArgsConstructor
-public class Required <K, V> implements Condition {
+public class Required <K, V> implements Condition { //"обязательно для заполнения"
     private Enum<DataType> dataType;
 
     @Override

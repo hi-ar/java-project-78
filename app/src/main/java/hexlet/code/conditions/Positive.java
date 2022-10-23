@@ -4,6 +4,6 @@ public class Positive implements Condition {
 
     @Override
     public <T> Boolean isMet(T t) {
-        return (Integer) t >= 0;
+        return t == null ? true : (Integer) t >= 0;
     }
 }

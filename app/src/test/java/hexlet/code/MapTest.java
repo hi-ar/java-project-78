@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class MapTest {
     @Test
-    public void numberTest1() {
+    public void mapTest1() {
         Validator v = new Validator();
         MapSchema schema = v.map();
 

@@ -29,4 +29,10 @@ public class NumberTest {
         assertThat(schema.isValid(-1)).isFalse();// false
         assertThat(schema.isValid(11)).isFalse(); // false
     }
+    @Test
+    public void numberTest2() {
+        Validator v = new Validator();
+        NumberSchema schema = v.number();
+        assertThat(schema.positive().isValid(null)).isTrue(); // true
+    }
 }
