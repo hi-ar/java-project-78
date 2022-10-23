@@ -13,23 +13,28 @@ public class StringTest {
 
         assertThat(schema.isValid("")).isTrue();
         assertThat(schema.isValid(null)).isTrue();
+        assertThat(schema.isValid(0)).isFalse();
 
         schema.required();
         assertThat(schema.isValid("what does the fox say")).isTrue(); // true
-        assertThat(schema.isValid("hexlet")).isTrue(); // true
-//        System.out.println(schema.sentence + " " + schema.conditions);
+        assertThat(schema.isValid(5)).isFalse(); // false
         assertThat(schema.isValid(null)).isFalse(); // false
-//        System.out.println(schema.sentence + " " + schema.conditions);
         assertThat(schema.isValid("")).isFalse(); // false
-//        System.out.println(schema.sentence + " " + schema.conditions);
 
-        assertThat(schema.contains("wh").isValid("what does the fox say")).isTrue(); // true НЕ РАБОТАЕТ
-//        System.out.println(schema.sentence + " " + schema.conditions);
+        assertThat(schema.contains("wh").isValid("what does the fox say")).isTrue(); // true
         assertThat(schema.contains("what").isValid("what does the fox say")).isTrue(); // true
-//        System.out.println(schema.sentence + " " + schema.conditions);
         assertThat(schema.contains("whatthe").isValid("what does the fox say")).isFalse(); // false
-//        System.out.println(schema.sentence + " " + schema.conditions);
 
         assertThat(schema.isValid("what does the fox say")).isFalse(); // false
+    }
+
+    @Test
+    public void stringTest2() {
+        Validator v = new Validator();
+        StringSchema schema = v.string();
+
+        schema.minLength(7);
+        assertThat(schema.isValid("Hello!")).isFalse();
+        assertThat(schema.isValid("Hello, World!")).isTrue();
     }
 }

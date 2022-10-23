@@ -41,9 +41,9 @@ test {
     useJUnitPlatform()
 }
 
-// testlogger {
-//     showStandardStreams true
-// }
+testlogger {
+    showStandardStreams true
+}
 
 jacocoTestReport {
     reports {

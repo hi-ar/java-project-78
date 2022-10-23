@@ -7,7 +7,8 @@ public class Contains implements Condition {
     private String searchingValue;
 
     @Override
-    public Boolean isMet(String s) {
-        return s.contains(searchingValue);
+    public <T> Boolean isMet(T t) {
+        String text = (String) t;
+        return text.contains(searchingValue);
     }
 }
