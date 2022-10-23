@@ -1,5 +1,5 @@
 package hexlet.code;
 
 public enum DataType {
-    String, Number
+    String, Number, Map
 }
