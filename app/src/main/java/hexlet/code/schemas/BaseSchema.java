@@ -82,7 +82,9 @@ public class BaseSchema {
         }
         Set<String> keySet = mapForValidation.keySet();
         for (String key : keySet) {
-
+            if(!schemas.get(key).isValid(mapForValidation.get(key))) {
+                return false;
+            }
         }
         return true;
     }
