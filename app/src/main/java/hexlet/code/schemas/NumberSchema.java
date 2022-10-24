@@ -33,12 +33,16 @@ public final class NumberSchema extends BaseSchema {
 
     @Override
     public <T> boolean isValid(T data) {
+        //если список условий не содержит required подходит любой
+        if (!conditions.contains(Required.class)) {
+            return true;
+        }
+        //список условий содержит required оставляем только цифры
         Integer num;
         try {
             num = data == null ? null : (Integer) data;
         } catch (Exception e) {
             return false;
-            //throw new RuntimeException("(Integer) data: " + data + " Maybe false? exc: " + e.toString()); //отладка
         }
         for (Condition condition : conditions) {
             if (!condition.isMet(num)) {
