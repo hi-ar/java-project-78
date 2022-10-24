@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import java.util.Map;
 
 @AllArgsConstructor
-public class Required <K, V> implements Condition { //"обязательно для заполнения"
+public final class Required<K, V> implements Condition { //"поле обязательно для заполнения"
     private Enum<DataType> dataType;
 
     @Override
@@ -29,6 +29,7 @@ public class Required <K, V> implements Condition { //"обязательно д
     private Boolean isMetNum(Integer num) {
         return num != null;
     }
+
     private Boolean isMetMap(Map<K, V> map) {
         return map != null;
     }

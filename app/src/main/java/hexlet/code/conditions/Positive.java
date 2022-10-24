@@ -1,6 +1,6 @@
 package hexlet.code.conditions;
 
-public class Positive implements Condition {
+public final class Positive implements Condition { //linter: final
 
     @Override
     public <T> Boolean isMet(T t) {

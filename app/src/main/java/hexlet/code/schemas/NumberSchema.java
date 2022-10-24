@@ -1,12 +1,17 @@
 package hexlet.code.schemas;
 
 import hexlet.code.DataType;
-import hexlet.code.conditions.*;
+import hexlet.code.conditions.Condition;
+import hexlet.code.conditions.Positive;
+import hexlet.code.conditions.Range;
+import hexlet.code.conditions.Required;
 
-public class NumberSchema extends BaseSchema {
-    public NumberSchema() {
-        dataType = DataType.Number;
-    }
+import java.util.ArrayList;
+import java.util.List;
+
+public final class NumberSchema extends BaseSchema {
+
+    private List<Condition> conditions = new ArrayList<>();
 
     public NumberSchema required() {
         Condition r = new Required(DataType.Number);
@@ -24,5 +29,22 @@ public class NumberSchema extends BaseSchema {
         Condition c = new Range(from, to);
         conditions.add(c);
         return this;
+    }
+
+    @Override
+    public <T> boolean isValid(T data) {
+        Integer num;
+        try {
+            num = data == null ? null : (Integer) data;
+        } catch (Exception e) {
+            return false;
+            //throw new RuntimeException("(Integer) data: " + data + " Maybe false? exc: " + e.toString()); //отладка
+        }
+        for (Condition condition : conditions) {
+            if (!condition.isMet(num)) {
+                return false;
+            }
+        }
+        return true;
     }
 }

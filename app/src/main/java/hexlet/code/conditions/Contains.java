@@ -3,7 +3,7 @@ package hexlet.code.conditions;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-public class Contains implements Condition {
+public final class Contains implements Condition { //linter: final
     private String searchingValue;
 
     @Override

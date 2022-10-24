@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import java.util.Map;
 
 @AllArgsConstructor
-public class  SizeOf <K, V> implements Condition {
+public final class  SizeOf<K, V> implements Condition {
     private int size;
     @Override
     public <T> Boolean isMet(T t) {

@@ -3,7 +3,7 @@ package hexlet.code.conditions;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-public class MinLength implements Condition {
+public final class MinLength implements Condition { //linter: final
 
     private int minLength;
 

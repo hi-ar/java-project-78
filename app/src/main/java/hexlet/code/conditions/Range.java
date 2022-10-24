@@ -3,9 +3,9 @@ package hexlet.code.conditions;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-public class Range implements Condition {
-    int from;
-    int to;
+public final class Range implements Condition { //linter: final
+    private int from;
+    private int to;
     @Override
     public <T> Boolean isMet(T t) {
         int num = (Integer) t;
