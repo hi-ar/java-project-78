@@ -30,7 +30,7 @@ public class NumberTest {
         schema.range(NUM_10, NUM10);
         assertThat(schema.isValid(0)).isTrue(); // true
         assertThat(schema.isValid(NUM10)).isTrue(); // true
-        assertThat(schema.isValid(-1)).isFalse(); // false
+        assertThat(schema.isValid(-1)).isFalse(); // false так как positive
         assertThat(schema.isValid(NUM11)).isFalse(); // false
     }
     @Test

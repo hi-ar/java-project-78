@@ -72,6 +72,9 @@ public final class MapSchema extends BaseSchema {
         }
         Set<String> keySet = mapForValidation.keySet();
         for (String key : keySet) {
+            if (!schemas.containsKey(key)) {
+                return false;
+            }
             if (!schemas.get(key).isValid(mapForValidation.get(key))) {
                 return false;
             }
