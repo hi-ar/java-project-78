@@ -27,7 +27,7 @@ public class NestedTest {
 
         Map<String, Object> human1 = new HashMap<>();
         human1.put("name", "Kolya");
-        human1.put("age", 100);
+        human1.put("age", NumberTest.NUM10);
         assertThat(schema.isValid(human1)).isTrue(); // true
 
         Map<String, Object> human2 = new HashMap<>();
@@ -42,7 +42,7 @@ public class NestedTest {
 
         Map<String, Object> human4 = new HashMap<>();
         human4.put("name", "Valya");
-        human4.put("age", -5);
+        human4.put("age", NumberTest.NUM_10);
         assertThat(schema.isValid(human4)).isFalse(); // false
     }
 }

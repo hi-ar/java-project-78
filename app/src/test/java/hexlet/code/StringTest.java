@@ -17,7 +17,7 @@ public class StringTest {
 
         schema.required();
         assertThat(schema.isValid("what does the fox say")).isTrue(); // true
-        assertThat(schema.isValid(5)).isFalse(); // false
+        assertThat(schema.isValid(NumberTest.NUM10)).isFalse(); // false
         assertThat(schema.isValid(null)).isFalse(); // false
         assertThat(schema.isValid("")).isFalse(); // false
 
@@ -33,7 +33,7 @@ public class StringTest {
         Validator v = new Validator();
         StringSchema schema = v.string();
 
-        schema.minLength(7);
+        schema.minLength(NumberTest.NUM10);
         assertThat(schema.isValid("Hello!")).isFalse();
         assertThat(schema.isValid("Hello, World!")).isTrue();
     }
