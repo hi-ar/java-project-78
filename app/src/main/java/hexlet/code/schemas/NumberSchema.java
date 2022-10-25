@@ -33,11 +33,14 @@ public final class NumberSchema extends BaseSchema {
 
     @Override
     public <T> boolean isValid(T data) {
-        //если список условий не содержит required подходит любой
-        if (!conditions.contains(Required.class)) {
-            return true;
-        }
-        //список условий содержит required оставляем только цифры
+        //if list of conditions doesn't contain required, any one is suitable (see numberTest2()
+        //this check works incorrectly:
+//        if (!conditions.contains(Required.class)) {
+//            return true;
+            //throw new RuntimeException(conditions.toString() + " True, because doesn't contain required"); //contains
+//        } else {
+
+        //if list of conditions contains required we leave only numbers:
         Integer num;
         try {
             num = data == null ? null : (Integer) data;
@@ -49,6 +52,7 @@ public final class NumberSchema extends BaseSchema {
                 return false;
             }
         }
+//        }
         return true;
     }
 }
