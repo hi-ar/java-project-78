@@ -1,10 +1,13 @@
 package hexlet.code;
 
+import hexlet.code.schemas.BaseSchema;
 import hexlet.code.schemas.MapSchema;
 import hexlet.code.schemas.NumberSchema;
 import hexlet.code.schemas.StringSchema;
 
-public final class Validator { //linter:  ...making the class 'Validator' final...
+import static hexlet.code.schemas.BaseSchema.dataType;
+
+public final class Validator {
 
     public StringSchema string() {
         return new StringSchema();
@@ -15,6 +18,7 @@ public final class Validator { //linter:  ...making the class 'Validator' final.
     }
 
     public MapSchema map() {
+//        BaseSchema.clearConditions();
         return new MapSchema();
     }
 }

@@ -1,58 +1,50 @@
 package hexlet.code.schemas;
 
 import hexlet.code.DataType;
-import hexlet.code.conditions.Condition;
-import hexlet.code.conditions.Positive;
-import hexlet.code.conditions.Range;
-import hexlet.code.conditions.Required;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.function.Predicate;
 
 public final class NumberSchema extends BaseSchema {
-
-    private List<Condition> conditions = new ArrayList<>();
+    public NumberSchema() {
+        dataType = DataType.Number;
+    }
 
     public NumberSchema required() {
-        Condition r = new Required(DataType.Number);
-        conditions.add(r);
+        isRequired = true;
+        Predicate<Integer> req = value -> value != null;
+        addCondition(req);
         return this;
     }
 
     public NumberSchema positive() {
-        Condition p = new Positive();
-        conditions.add(p);
+        Predicate<Integer> pos = value -> value >= 0;
+        addCondition(pos);
         return this;
     }
 
     public NumberSchema range(int from, int to) {
-        Condition c = new Range(from, to);
-        conditions.add(c);
+        Predicate<Integer> rng = value -> value >= from && value <= to;
+        addCondition(rng);
         return this;
     }
 
-    @Override
-    public <T> boolean isValid(T data) {
-        //if list of conditions doesn't contain required, any one is suitable (see numberTest2()
-        //this check works incorrectly:
+//    @Override
+//    public <T> boolean isValid(T data) {
 //        if (!conditions.contains(Required.class)) {
 //            return true;
-            //throw new RuntimeException(conditions.toString() + " True, because doesn't contain required"); //contains
 //        } else {
-
-        //if list of conditions contains required we leave only numbers:
-        Integer num;
-        try {
-            num = data == null ? null : (Integer) data;
-        } catch (Exception e) {
-            return false;
-        }
-        for (Condition condition : conditions) {
-            if (!condition.isMet(num)) {
-                return false;
-            }
-        }
+//
+//            Integer num;
+//            try {
+//                num = data == null ? null : (Integer) data;
+//            } catch (Exception e) {
+//                return false;
+//            }
+//            for (Condition condition : conditions) {
+//                if (!condition.isMet(num)) {
+//                    return false;
+//                }
+//            }
 //        }
-        return true;
-    }
+//        return true;
+//    }
 }
