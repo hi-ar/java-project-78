@@ -20,7 +20,7 @@ public abstract class BaseSchema {
     public abstract BaseSchema required();
 
     /**
-     *
+     * linter: [DesignForExtension] error, need javadoc
      * @param data for validation
      * @return does the data satisfy the specified conditions
      * @param <T> String, Integer or Map
@@ -28,13 +28,14 @@ public abstract class BaseSchema {
     public <T> boolean isValid(T data) {
 
         Object convertedData;
+
         if (!isRequired && data == null //if the field is optional and has non-valid data type
                 || !isRequired && !data.getClass().equals(validClass())) {
             return true;
         }
-
+//
         try {
-            convertedData = (validClass().cast(data));
+            convertedData = data == null ? null : (validClass().cast(data));
         } catch (Exception e) {
             return false;
         }

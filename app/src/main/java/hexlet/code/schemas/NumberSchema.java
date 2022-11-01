@@ -1,5 +1,6 @@
 package hexlet.code.schemas;
 
+import java.util.Objects;
 import java.util.function.Predicate;
 
 public final class NumberSchema extends BaseSchema {
@@ -11,7 +12,7 @@ public final class NumberSchema extends BaseSchema {
 
     public NumberSchema required() {
         setRequired(true);
-        Predicate<Integer> req = value -> value != null;
+        Predicate<Object> req = obj -> obj instanceof Integer;//Objects::nonNull;
         addCondition(req);
         return this;
     }
