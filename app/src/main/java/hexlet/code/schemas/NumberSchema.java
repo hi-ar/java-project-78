@@ -12,7 +12,7 @@ public final class NumberSchema extends BaseSchema {
     public NumberSchema required() {
         setRequired(true);
         Predicate<Object> req = obj -> obj instanceof Integer; //Objects::nonNull;
-        addCondition(req);
+        addCondition(0, req);
         return this;
     }
 

@@ -18,7 +18,7 @@ public final class MapSchema<K, V> extends BaseSchema {
     public MapSchema required() {
         setRequired(true);
         Predicate<Map<K, V>> req = value -> value != null;
-        addCondition(req);
+        addCondition(0, req);
         return this;
     }
 

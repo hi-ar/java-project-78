@@ -9,9 +9,13 @@ import java.util.function.Predicate;
 public abstract class BaseSchema {
     private List<Predicate> conditions = new ArrayList<>();
 
+    public final void addCondition(int index, Predicate condition) { //
+        conditions.add(index, condition);
+    }
     public final void addCondition(Predicate condition) { //
         conditions.add(condition);
     }
+
 
     private boolean isRequired; //isRequired availability flag
 
