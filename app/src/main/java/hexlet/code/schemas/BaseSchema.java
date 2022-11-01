@@ -20,7 +20,7 @@ public abstract class BaseSchema {
     public abstract BaseSchema required();
 
     /**
-     * linter: [DesignForExtension] error, need javadoc
+     *
      * @param data for validation
      * @return does the data satisfy the specified conditions
      * @param <T> String, Integer or Map
