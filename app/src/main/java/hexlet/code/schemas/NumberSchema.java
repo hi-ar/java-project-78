@@ -1,22 +1,23 @@
 package hexlet.code.schemas;
 
-import hexlet.code.DataType;
 import java.util.function.Predicate;
 
 public final class NumberSchema extends BaseSchema {
-    public NumberSchema() {
-        dataType = DataType.Number;
+
+    @Override
+    public Class validClass() {
+        return Integer.class;
     }
 
     public NumberSchema required() {
-        isRequired = true;
+        setRequired(true);
         Predicate<Integer> req = value -> value != null;
         addCondition(req);
         return this;
     }
 
     public NumberSchema positive() {
-        Predicate<Integer> pos = value -> value >= 0;
+        Predicate<Integer> pos = value -> (Integer) value >= 0;
         addCondition(pos);
         return this;
     }
@@ -26,25 +27,4 @@ public final class NumberSchema extends BaseSchema {
         addCondition(rng);
         return this;
     }
-
-//    @Override
-//    public <T> boolean isValid(T data) {
-//        if (!conditions.contains(Required.class)) {
-//            return true;
-//        } else {
-//
-//            Integer num;
-//            try {
-//                num = data == null ? null : (Integer) data;
-//            } catch (Exception e) {
-//                return false;
-//            }
-//            for (Condition condition : conditions) {
-//                if (!condition.isMet(num)) {
-//                    return false;
-//                }
-//            }
-//        }
-//        return true;
-//    }
 }
