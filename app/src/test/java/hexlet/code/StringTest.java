@@ -30,15 +30,15 @@ public class StringTest {
 
     @Test
     public void stringTest2() {
-        Validator v2 = new Validator();
-        StringSchema schema2 = v2.string();
+        Validator v = new Validator();
+        StringSchema schema = v.string();
 
-        schema2.minLength(NumberTest.NUM10);
-        assertThat(schema2.isValid("Hello!")).isFalse(); //тк нет рекваед
-        assertThat(schema2.isValid("Hello, World!")).isTrue();
+        schema.minLength(NumberTest.NUM10);
+        assertThat(schema.isValid("Hello!")).isFalse(); //тк нет рекваед
+        assertThat(schema.isValid("Hello, World!")).isTrue();
 
-        schema2.required();
-        assertThat(schema2.isValid("Hello!")).isFalse();
-        assertThat(schema2.isValid("Hello, World!")).isTrue();
+        schema.required();
+        assertThat(schema.isValid("Hello!")).isFalse();
+        assertThat(schema.isValid("Hello, World!")).isTrue();
     }
 }

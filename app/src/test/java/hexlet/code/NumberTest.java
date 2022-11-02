@@ -4,6 +4,8 @@ import hexlet.code.schemas.NumberSchema;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class NumberTest {
 
@@ -52,5 +54,32 @@ public class NumberTest {
 
         schema.range(NUM_10, NUM10);
         assertThat(schema.isValid(NUM_100)).isFalse(); // false
+    }
+
+    @Test
+    public void numberTest3() {
+        Validator v = new Validator();
+        NumberSchema schema = v.number();
+        schema.range(-10, 10).range(-5, 100).positive().range(-100, 5);
+        assertTrue(schema.isValid(5));
+        assertTrue(schema.isValid(0));
+        assertFalse(schema.isValid(-5));
+        assertFalse(schema.isValid(10));
+        assertFalse(schema.isValid(-10));
+        assertTrue(schema.isValid("hello"));
+        assertTrue(schema.isValid(null));
+        assertTrue(schema.isValid(3.1415));
+        assertTrue(schema.isValid('A'));
+
+        schema.required();
+        assertTrue(schema.isValid(5));
+        assertTrue(schema.isValid(0));
+        assertFalse(schema.isValid(-5));
+        assertFalse(schema.isValid(10));
+        assertFalse(schema.isValid(-10));
+        assertFalse(schema.isValid("hello"));
+        assertFalse(schema.isValid(null));
+        assertFalse(schema.isValid(3.1415));
+        assertFalse(schema.isValid('A'));
     }
 }
