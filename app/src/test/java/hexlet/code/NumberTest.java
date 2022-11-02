@@ -9,8 +9,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class NumberTest {
 
+    public static final int NUM5 = 5;
+    public static final int NUM_5 = -5;
     public static final int NUM10 = 10;
     public static final int NUM_10 = -10;
+    public static final int NUM100 = 100;
     public static final int NUM_100 = -100;
     public static final int NUM11 = 11;
 
@@ -60,26 +63,26 @@ public class NumberTest {
     public void numberTest3() {
         Validator v = new Validator();
         NumberSchema schema = v.number();
-        schema.range(-10, 10).range(-5, 100).positive().range(-100, 5);
-        assertTrue(schema.isValid(5));
+        schema.range(NUM_10, NUM10).range(NUM_5, NUM100).positive().range(NUM_100, NUM5);
+        assertTrue(schema.isValid(NUM5));
         assertTrue(schema.isValid(0));
-        assertFalse(schema.isValid(-5));
-        assertFalse(schema.isValid(10));
-        assertFalse(schema.isValid(-10));
+        assertFalse(schema.isValid(NUM_5));
+        assertFalse(schema.isValid(NUM10));
+        assertFalse(schema.isValid(NUM_10));
         assertTrue(schema.isValid("hello"));
         assertTrue(schema.isValid(null));
-        assertTrue(schema.isValid(3.1415));
+        assertTrue(schema.isValid(Math.PI));
         assertTrue(schema.isValid('A'));
 
         schema.required();
-        assertTrue(schema.isValid(5));
+        assertTrue(schema.isValid(NUM5));
         assertTrue(schema.isValid(0));
-        assertFalse(schema.isValid(-5));
-        assertFalse(schema.isValid(10));
-        assertFalse(schema.isValid(-10));
+        assertFalse(schema.isValid(NUM_5));
+        assertFalse(schema.isValid(NUM10));
+        assertFalse(schema.isValid(NUM_10));
         assertFalse(schema.isValid("hello"));
         assertFalse(schema.isValid(null));
-        assertFalse(schema.isValid(3.1415));
+        assertFalse(schema.isValid(Math.PI));
         assertFalse(schema.isValid('A'));
     }
 }
