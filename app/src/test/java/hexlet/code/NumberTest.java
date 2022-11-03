@@ -40,7 +40,7 @@ public class NumberTest {
         assertThat(schema.positive().isValid(NUM_10)).isFalse(); // false
 
         schema.range(NUM_10, NUM10);
-        assertThat(schema.isValid(0)).isTrue(); // true
+        assertThat(schema.isValid(0)).isFalse(); // FFF
         assertThat(schema.isValid(NUM10)).isTrue(); // true
         assertThat(schema.isValid(-1)).isFalse(); // false так как positive
         assertThat(schema.isValid(NUM11)).isFalse(); // false
@@ -65,7 +65,7 @@ public class NumberTest {
         NumberSchema schema = v.number();
         schema.range(NUM_10, NUM10).range(NUM_5, NUM100).positive().range(NUM_100, NUM5);
         assertTrue(schema.isValid(NUM5));
-        assertTrue(schema.isValid(0));
+        assertFalse(schema.isValid(0));
         assertFalse(schema.isValid(NUM_5));
         assertFalse(schema.isValid(NUM10));
         assertFalse(schema.isValid(NUM_10));
@@ -76,7 +76,7 @@ public class NumberTest {
 
         schema.required();
         assertTrue(schema.isValid(NUM5));
-        assertTrue(schema.isValid(0));
+        assertFalse(schema.isValid(0));
         assertFalse(schema.isValid(NUM_5));
         assertFalse(schema.isValid(NUM10));
         assertFalse(schema.isValid(NUM_10));

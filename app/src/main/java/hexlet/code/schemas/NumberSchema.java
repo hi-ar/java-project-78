@@ -17,7 +17,7 @@ public final class NumberSchema extends BaseSchema {
     }
 
     public NumberSchema positive() {
-        Predicate<Integer> pos = value -> (Integer) value >= 0;
+        Predicate<Integer> pos = value -> (Integer) value > 0;
         addCondition(pos);
         return this;
     }
