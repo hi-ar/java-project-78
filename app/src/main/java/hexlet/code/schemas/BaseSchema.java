@@ -16,7 +16,6 @@ public abstract class BaseSchema {
         conditions.add(condition);
     }
 
-
     private boolean isRequired; //isRequired availability flag
 
     public abstract Class validClass();
@@ -27,17 +26,16 @@ public abstract class BaseSchema {
      *
      * @param data for validation
      * @return does the data satisfy the specified conditions
-     * @param <T> String, Integer or Map
      */
-    public <T> boolean isValid(T data) {
-
-        Object convertedData;
+    public boolean isValid(Object data) {
 
         if (!isRequired && data == null //if the field is optional and has non-valid data type
                 || !isRequired && !data.getClass().equals(validClass())) {
             return true;
         }
-//
+
+        Object convertedData;
+
         try {
             convertedData = data == null ? null : (validClass().cast(data));
         } catch (Exception e) {

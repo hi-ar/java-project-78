@@ -11,7 +11,7 @@ public final class StringSchema extends BaseSchema {
 
     public StringSchema required() {
         setRequired(true);
-        Predicate<String> req = value -> value != null && !value.equals("");
+        Predicate<String> req = value -> value != null && !value.isEmpty();
         addCondition(0, req);
         return this;
     }

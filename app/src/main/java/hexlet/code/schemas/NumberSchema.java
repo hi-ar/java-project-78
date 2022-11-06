@@ -11,13 +11,13 @@ public final class NumberSchema extends BaseSchema {
 
     public NumberSchema required() {
         setRequired(true);
-        Predicate<Object> req = obj -> obj instanceof Integer; //Objects::nonNull;
+        Predicate<Object> req = value -> value != null;  //instanceof Integer;
         addCondition(0, req);
         return this;
     }
 
     public NumberSchema positive() {
-        Predicate<Integer> pos = value -> (Integer) value > 0;
+        Predicate<Integer> pos = value -> value > 0; //converted to Int in BaseSchema:42
         addCondition(pos);
         return this;
     }
