@@ -34,7 +34,7 @@ public class ValidatorsTest {
 
         schema.required();
         assertThat(schema.isValid("what does the fox say")).isTrue(); // true
-        assertThat(schema.isValid(NumberTest.NUM10)).isFalse(); // false
+        assertThat(schema.isValid(NUM10)).isFalse(); // false
         assertThat(schema.isValid(null)).isFalse(); // false
         assertThat(schema.isValid("")).isFalse(); // false
 
@@ -50,7 +50,7 @@ public class ValidatorsTest {
         Validator v = new Validator();
         StringSchema schema = v.string();
 
-        schema.minLength(NumberTest.NUM10);
+        schema.minLength(NUM10);
         assertThat(schema.isValid("Hello!")).isFalse(); //тк нет рекваед
         assertThat(schema.isValid("Hello, World!")).isTrue();
 
@@ -167,7 +167,7 @@ public class ValidatorsTest {
 
         Map<String, Object> human1 = new HashMap<>();
         human1.put("name", "Kolya");
-        human1.put("age", NumberTest.NUM10);
+        human1.put("age", NUM10);
         assertThat(schema.isValid(human1)).isTrue(); // true
 
         Map<String, Object> human2 = new HashMap<>();
@@ -182,7 +182,7 @@ public class ValidatorsTest {
 
         Map<String, Object> human4 = new HashMap<>();
         human4.put("name", "Valya");
-        human4.put("age", NumberTest.NUM_10); //это поле не required
+        human4.put("age", NUM_10); //это поле не required
         assertThat(schema.isValid(human4)).isFalse();
     }
 }
