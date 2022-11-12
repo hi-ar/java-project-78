@@ -33,7 +33,6 @@ public final class MapSchema<K, V> extends BaseSchema {
 
     public MapSchema shape(Map<String, BaseSchema> newSchemas) { //getting conditions map
         this.schemas = new HashMap<>(newSchemas); //saving conditions map
-//        setRequired(true); // выставлен только шейп, должны пропустить пустую мапу
         Predicate<Map<String, V>> checkNested = mapForValidation -> {
             for (String key : mapForValidation.keySet()) {
                 if (!schemas.containsKey(key)) { //if no conditions for this key
