@@ -32,8 +32,7 @@ public abstract class BaseSchema {
      */
     public boolean isValid(Object data) {
 
-        if (!isRequired && data == null // if not required and data null
-                || !isRequired && !hasValidFormat(data)) { // if not required and data has wrong class
+        if (!isRequired && (data == null || !hasValidFormat(data))) {
             return true;
         }
 
