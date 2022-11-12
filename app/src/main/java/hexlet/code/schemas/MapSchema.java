@@ -15,7 +15,7 @@ public final class MapSchema<K, V> extends BaseSchema {
 
     @Override
     public boolean hasValidFormat(Object data) {
-        return data instanceof Map<?,?>;
+        return data instanceof Map<?, ?>;
     }
 
     public MapSchema required() {
