@@ -9,6 +9,11 @@ public final class NumberSchema extends BaseSchema {
         return Integer.class;
     }
 
+    @Override
+    public boolean hasValidFormat(Object data) {
+        return data instanceof Integer;
+    }
+
     public NumberSchema required() {
         setRequired(true);
         Predicate<Object> req = value -> value != null;  //instanceof Integer;

@@ -10,7 +10,12 @@ public final class MapSchema<K, V> extends BaseSchema {
 
     @Override
     public Class validClass() {
-        return Map.class; //HashMap
+        return HashMap.class; //HashMap
+    }
+
+    @Override
+    public boolean hasValidFormat(Object data) {
+        return data instanceof Map<?,?>;
     }
 
     public MapSchema required() {
@@ -27,8 +32,8 @@ public final class MapSchema<K, V> extends BaseSchema {
     }
 
     public MapSchema shape(Map<String, BaseSchema> newSchemas) { //getting conditions map
-        this.schemas = newSchemas; //saving conditions map
-        setRequired(true);
+        this.schemas = new HashMap<>(newSchemas); //saving conditions map
+//        setRequired(true); // выставлен только шейп, должны пропустить пустую мапу
         Predicate<Map<String, V>> checkNested = mapForValidation -> {
             for (String key : mapForValidation.keySet()) {
                 if (!schemas.containsKey(key)) { //if no conditions for this key

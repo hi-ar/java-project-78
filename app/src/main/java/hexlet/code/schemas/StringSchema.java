@@ -9,6 +9,11 @@ public final class StringSchema extends BaseSchema {
         return String.class;
     }
 
+    @Override
+    public boolean hasValidFormat(Object data) {
+        return data instanceof String;
+    }
+
     public StringSchema required() {
         setRequired(true);
         Predicate<String> req = value -> value != null && !value.isEmpty();

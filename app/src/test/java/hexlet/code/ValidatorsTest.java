@@ -162,7 +162,7 @@ public class ValidatorsTest {
         //положили два условия, обязательное имя и возраст положительное число:
         schemas.put("name", v.string().required());
         schemas.put("age", v.number().positive());
-        schema.shape(schemas); //метод шейп валидация мапы СХЕМЫ, сохраняет набор требований к мапам
+        schema.shape(schemas).required(); //метод шейп валидация мапы СХЕМЫ, сохраняет набор требований к мапам
 
 
         Map<String, Object> human1 = new HashMap<>();
@@ -184,5 +184,9 @@ public class ValidatorsTest {
         human4.put("name", "Valya");
         human4.put("age", NUM_10); //это поле не required
         assertThat(schema.isValid(human4)).isFalse();
+
+        assertThat(schema.isValid("Hello")).isFalse(); //true w/o .reqired()
+
+        assertThat(schema.isValid(null)).isFalse(); //true w/o .reqired()
     }
 }
