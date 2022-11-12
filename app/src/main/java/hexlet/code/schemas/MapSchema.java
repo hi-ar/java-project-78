@@ -9,8 +9,8 @@ public final class MapSchema<K, V> extends BaseSchema {
     // schemas.put("name", v.string().required()); schemas.put("age", v.number().positive());
 
     @Override
-    public Class validClass() {
-        return HashMap.class; //HashMap
+    public Class validClass(Object data) {
+        return data instanceof Map<?, ?> ? data.getClass() : HashMap.class;
     }
 
     @Override

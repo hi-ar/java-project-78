@@ -5,7 +5,7 @@ import java.util.function.Predicate;
 public final class NumberSchema extends BaseSchema {
 
     @Override
-    public Class validClass() {
+    public Class validClass(Object data) {
         return Integer.class;
     }
 

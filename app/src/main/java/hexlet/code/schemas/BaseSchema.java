@@ -20,7 +20,7 @@ public abstract class BaseSchema {
 
     private boolean isRequired; //isRequired availability flag
 
-    public abstract Class validClass();
+    public abstract Class validClass(Object data);
 
     public abstract boolean hasValidFormat(Object data);
 
@@ -32,14 +32,14 @@ public abstract class BaseSchema {
      */
     public boolean isValid(Object data) {
 
-        if (!isRequired && (data == null || !hasValidFormat(data))) {
+        if (!isRequired && (data == null || !hasValidFormat(data))) { //not required & (null or incorrect class)
             return true;
         }
 
         Object convertedData;
 
         try {
-            convertedData = data == null ? null : (validClass().cast(data));
+            convertedData = data == null ? null : (validClass(data).cast(data));
         } catch (Exception e) {
             return false;
         }

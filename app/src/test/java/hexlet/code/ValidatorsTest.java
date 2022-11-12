@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -149,6 +150,11 @@ public class ValidatorsTest {
         assertThat(schema.isValid(data)).isFalse();  // false
         data.put("key2", "value2");
         assertThat(schema.isValid(data)).isTrue(); // true
+
+        Map<String, String> sortedData = new TreeMap<>();
+        sortedData.put("1", "apple");
+        sortedData.put("2", "banana");
+        assertThat(schema.isValid(sortedData)).isTrue();
     }
 
     @Test
