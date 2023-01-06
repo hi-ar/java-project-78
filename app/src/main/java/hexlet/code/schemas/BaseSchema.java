@@ -39,7 +39,7 @@ public abstract class BaseSchema {
         Object convertedData;
 
         try {
-            convertedData = data == null ? null : (validClass(data).cast(data));
+            convertedData = data == null ? null : (validClass(data).cast(data)); //specifyClass(data)
         } catch (Exception e) {
             return false;
         }
