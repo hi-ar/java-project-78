@@ -20,7 +20,7 @@ public abstract class BaseSchema {
 
     private boolean isRequired; //isRequired availability flag
 
-    public abstract Class validClass(Object data);
+    public abstract Object specifyClass(Object data);
 
     public abstract boolean hasValidFormat(Object data);
 
@@ -39,7 +39,7 @@ public abstract class BaseSchema {
         Object convertedData;
 
         try {
-            convertedData = data == null ? null : (validClass(data).cast(data)); //specifyClass(data)
+            convertedData = data == null ? null : specifyClass(data);
         } catch (Exception e) {
             return false;
         }

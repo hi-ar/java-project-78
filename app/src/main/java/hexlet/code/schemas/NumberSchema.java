@@ -3,10 +3,9 @@ package hexlet.code.schemas;
 import java.util.function.Predicate;
 
 public final class NumberSchema extends BaseSchema {
-
     @Override
-    public Class validClass(Object data) {
-        return Integer.class;
+    public Integer specifyClass(Object data) {
+        return (Integer) data;
     }
 
     @Override

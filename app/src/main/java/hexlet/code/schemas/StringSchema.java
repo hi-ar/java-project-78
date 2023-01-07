@@ -3,10 +3,9 @@ package hexlet.code.schemas;
 import java.util.function.Predicate;
 
 public final class StringSchema extends BaseSchema {
-
     @Override
-    public Class validClass(Object data) {
-        return String.class;
+    public String specifyClass(Object data) {
+        return (String) data;
     }
 
     @Override

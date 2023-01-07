@@ -9,10 +9,9 @@ public final class MapSchema<K, V> extends BaseSchema {
     // schemas.put("name", v.string().required()); schemas.put("age", v.number().positive());
 
     @Override
-    public Class validClass(Object data) { //вместо него сделать
-        return data instanceof Map<?, ?> ? data.getClass() : HashMap.class;
+    public Map specifyClass(Object data) {
+        return (Map) data;
     }
-    //data of class HM/LM? return HM/LM class, otherwise HM (will throw E on casting)
 
     @Override
     public boolean hasValidFormat(Object data) {
